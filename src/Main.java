@@ -102,8 +102,8 @@ public class Main {
         // En nuestro caso, representa aquellas personas que son únicamente directores y aquellas que
         // son unicamente empleados.
 
-        HashSet <Nomina> nominasSinDirectivos = new HashSet<>(directivos);
-        nominasSinDirectivos.removeAll(nominas);
+        HashSet <Nomina> nominasSinDirectivos = new HashSet<>(nominas);
+        nominasSinDirectivos.removeAll(directivos);
         for (Nomina nomina : nominasSinDirectivos) {
             System.out.println(nomina.getP().toString() + "Salario Bruto" + nomina.getSalarioBruto() + "€");
         }
