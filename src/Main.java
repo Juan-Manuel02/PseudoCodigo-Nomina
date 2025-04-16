@@ -96,5 +96,10 @@ public class Main {
         for (Nomina nomina : directivosConNominas) {
             System.out.println(nomina.getP().toString() + "Salario Bruto" + nomina.getSalarioBruto() + "€");
         }
+
+        // Noción de diferencia: La diferencia entre dos conjuntos está formada por todos los
+        // elementos presentes en uno.
+        // En nuestro caso, representa aquellas personas que son únicamente directores y aquellas que
+        //
     }
 }
