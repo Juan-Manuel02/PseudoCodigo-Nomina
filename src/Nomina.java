@@ -70,30 +70,39 @@ public class Nomina {
         return (porcentaje/100) * this.salarioBruto;
     }
     //Mostramos la nomina
-    public void mostrarNomina (){
+    public void mostrarNomina() {
         double dedSocial, dedConComun, dedMedico, dedFondoP, dedPensionC, dedSegDes, salarioNeto, deduccionTotal, dedContrJubAnt;
         System.out.println(p.toString());
-        System.out.println("Salario Bruto -> " + this.salarioBruto);
+        System.out.println("Salario Bruto -> " + String.format("%.2f", this.salarioBruto) + "€");
         System.out.println("\nCalculo de Deducciones");
-        dedSocial = this.calculoDeduccion(this.D_DEUDA_SOCIAL);
-        System.out.println("Deducción Social ->" + dedSocial);
-        dedConComun = this.calculoDeduccion(this.D_NO_COMUN);
-        System.out.println("Deducción de Contingencias no Comunes -> " + dedConComun);
-        dedMedico = this.calculoDeduccion(this.D_SEG_MEDICO);
-        System.out.println("Deducción de Seguro Medico -> " + dedMedico);
-        dedFondoP = this.calculoDeduccion(this.D_FONDO_P);
-        System.out.println("Deducción de Fondo de Pensiones -> " + dedFondoP);
-        dedSegDes = this.calculoDeduccion(this.D_SEG_DES);
-        System.out.println("Deducción Seguro de Desempleo -> " + dedSegDes);
-        dedPensionC = this.calculoDeduccion(this.D_PENSION_C);
-        System.out.println("Deducción Pension Complementaria -> " + dedPensionC);
-        dedContrJubAnt = this.calculoDeduccion(this.D_CONTR_JUB_ANT);
-        System.out.println("Deducción Jubilación Anticipada -> " + dedContrJubAnt);
 
-        deduccionTotal = this.salarioBruto - dedPensionC - dedFondoP - dedMedico - dedContrJubAnt - dedConComun - dedSegDes - dedSegDes;
-        System.out.println("\nTotal de deducciones -> " + dedSocial);
+        dedSocial = this.calculoDeduccion(this.D_DEUDA_SOCIAL);
+        System.out.println("Deducción Social -> " + String.format("%.2f", dedSocial) + "€");
+
+        dedConComun = this.calculoDeduccion(this.D_NO_COMUN);
+        System.out.println("Deducción de Contingencias no Comunes -> " + String.format("%.2f", dedConComun) + "€");
+
+        dedMedico = this.calculoDeduccion(this.D_SEG_MEDICO);
+        System.out.println("Deducción de Seguro Medico -> " + String.format("%.2f", dedMedico) + "€");
+
+        dedFondoP = this.calculoDeduccion(this.D_FONDO_P);
+        System.out.println("Deducción de Fondo de Pensiones -> " + String.format("%.2f", dedFondoP) + "€");
+
+        dedSegDes = this.calculoDeduccion(this.D_SEG_DES);
+        System.out.println("Deducción Seguro de Desempleo -> " + String.format("%.2f", dedSegDes) + "€");
+
+        dedPensionC = this.calculoDeduccion(this.D_PENSION_C);
+        System.out.println("Deducción Pension Complementaria -> " + String.format("%.2f", dedPensionC) + "€");
+
+        dedContrJubAnt = this.calculoDeduccion(this.D_CONTR_JUB_ANT);
+        System.out.println("Deducción Jubilación Anticipada -> " + String.format("%.2f", dedContrJubAnt) + "€");
+
+        // Corregido el cálculo de deduccionTotal (estabas restando dedSegDes dos veces)
+        deduccionTotal = dedSocial + dedConComun + dedMedico + dedFondoP + dedPensionC + dedSegDes + dedContrJubAnt;
+        System.out.println("\nTotal de deducciones -> " + String.format("%.2f", deduccionTotal) + "€");
+
         salarioNeto = this.salarioBruto - deduccionTotal;
-        System.out.println("Prima familiar -> " + calcularFrimaFamiliar());
-        System.out.println("Prima Neto -> " + salarioNeto + calcularFrimaFamiliar());
+        System.out.println("Prima familiar -> " + String.format("%.2f", calcularFrimaFamiliar()) + "€");
+        System.out.println("Salario Neto -> " + String.format("%.2f", salarioNeto + calcularFrimaFamiliar()) + "€");
     }
 }
