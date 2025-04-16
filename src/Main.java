@@ -100,6 +100,12 @@ public class Main {
         // Noción de diferencia: La diferencia entre dos conjuntos está formada por todos los
         // elementos presentes en uno.
         // En nuestro caso, representa aquellas personas que son únicamente directores y aquellas que
-        //
+        // son unicamente empleados.
+
+        HashSet <Nomina> nominasSinDirectivos = new HashSet<>(directivos);
+        nominasSinDirectivos.removeAll(nominas);
+        for (Nomina nomina : nominasSinDirectivos) {
+            System.out.println(nomina.getP().toString() + "Salario Bruto" + nomina.getSalarioBruto() + "€");
+        }
     }
 }
