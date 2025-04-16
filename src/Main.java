@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 
 public class Main {
@@ -63,12 +64,37 @@ public class Main {
         ArrayList <Nomina> directivos = new ArrayList<>();
         directivos.add(n6);
         directivos.add(n7);
-        // Todas las nominas....
+        directivos.add(n2);
+
+        // Nocion de subconjunto: Se considera que un conjunto es un subconjunto de otro si
+        // çtodos sus elementos están contenidos en el.
+        // Por ejemplo podemos decir qué directivos es un subconjuntos de nóminas si todos los directivos
+        // los contiene nóminas
+
         if (nominas.containsAll(directivos)) {
             System.out.println("La colección nóminas contiene las nóminas de los directivos");
         }else{
             System.out.println("La colección nóminas no contiene las nóminas de los directivos");
         }
 
+        // Noción de unión: La unión de dos conjuntos es el conjunto formado por todos los elementos
+        // contenidos en cada uno de ambos conjuntos.
+        // Podemos, por ejemplo, definir un conjunto llamado NominasEmpleado que sea la unión de directivos y nóminas
+
+        HashSet <Nomina> nominasEmpleados = new HashSet<>(directivos);
+        nominasEmpleados.addAll(nominas);
+        for (Nomina nomina : nominasEmpleados) {
+            System.out.println(nomina.getP().toString() + "Salario Bruto" + nomina.getSalarioBruto() + "€");
+        }
+
+        // Noción de intersección: La intersección de dos conjuntos están formada por los elementos
+        // contenidos a la vez en el primer y el segundo conjunto.
+        // En nuestro caso contiene aquellas personas que son, a la vez, directivos que tienen nóminas
+
+        HashSet <Nomina> directivosConNominas = new HashSet<>(nominas);
+        directivosConNominas.retainAll(directivos);
+        for (Nomina nomina : directivosConNominas) {
+            System.out.println(nomina.getP().toString() + "Salario Bruto" + nomina.getSalarioBruto() + "€");
+        }
     }
 }

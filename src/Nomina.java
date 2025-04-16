@@ -114,4 +114,8 @@ public class Nomina {
         System.out.println("Prima familiar -> " + String.format("%.2f", calcularFrimaFamiliar()) + "€");
         System.out.println("Salario Neto -> " + String.format("%.2f", salarioNeto + calcularFrimaFamiliar()) + "€");
     }
+
+    public double getSalarioBruto() {
+        return salarioBruto;
+    }
 }
