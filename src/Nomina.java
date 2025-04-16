@@ -36,6 +36,15 @@ public class Nomina {
     public void setTarifaHoras(double tarifaHoras) {
         this.tarifaHoras = tarifaHoras;
     }
+
+    public Personal getP() {
+        return p;
+    }
+
+    public void setP(Personal p) {
+        this.p = p;
+    }
+
     // Calculamos la prima familiar
     public double calcularFrimaFamiliar (){
         double primaFamiliar = 0;
